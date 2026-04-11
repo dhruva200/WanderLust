@@ -7,7 +7,6 @@ const listingSchema = Joi.object({
         location: Joi.string().required(),
         country: Joi.string().required(),
         price: Joi.number().required().min(0),
-        // Updated: image is now an object to match Mongoose
         image: Joi.object({
             url: Joi.string().allow("", null),
             filename: Joi.string().allow("", null)
@@ -15,4 +14,13 @@ const listingSchema = Joi.object({
     }).required()
 });
 
-module.exports = { listingSchema };
+// 1. Define the reviewSchema
+const reviewSchema = Joi.object({
+    review: Joi.object({
+        rating: Joi.number().required().min(1).max(5),
+        comment: Joi.string().required(),
+    }).required(),
+});
+
+// 2. Export BOTH schemas
+module.exports = { listingSchema, reviewSchema };
