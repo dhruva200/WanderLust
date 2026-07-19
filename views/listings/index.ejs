@@ -1,131 +1,87 @@
 <% layout("/layouts/boilerplate") %> 
-<style>
-    #filters{
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    .filter{
-        text-align: center;
-        margin-right: 2rem;
-        margin-top: 2rem;
-        opacity: 0.7;   
-    }
-    .filter:hover{
-        opacity: 1;
-    }
-    .filter p{
-        font-size: 0.8rem;
-    }
-    .tax-info{
-        display: none;    
-    }
-    .tax-toggle {
-    border: 1px solid #717171; 
-    border-radius: 12px;
-    height: 3.25rem;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    margin-top: 1.2rem;
-    margin-left: auto; 
-    cursor: pointer;
-}
-         
-</style>
 
-
-    <!-- <h3>All Listings</h3> -->
-    <!-- <form method="get" action="/listings/new">
-        <button>Create New Listing</button>
-    </form> -->
-    <div id="filters">
-        <div class="filter">
-           <div> <i class="fa-solid fa-fire"></i></div>
-            <p>Trending</p>
-        </div>
-        <div class="filter">
-           <div> <i class="fa-solid fa-bed"></i></div>
-            <p>Rooms</p>
-        </div>
-         <div class="filter">
-           <div> <i class="fa-solid fa-city"></i></div>
-            <p>Iconic cities</p>
-         </div>
-          <div class="filter">
-           <div> <i class="fa-solid fa-mountain"></i></div>
-            <p>Mountains</p>
-         </div>
-          <div class="filter">
-           <div> <i class="fa-brands fa-fort-awesome"></i></div>
-            <p>Castles</p>
-         </div>
-          <div class="filter">
-           <div> <i class="fa-solid fa-snowflake"></i></div>
-            <p>Artic</p>
-         </div>
-          <div class="filter">
-           <div> <i class="fa-solid fa-campground"></i></div>
-            <p>Camping</p>
-         </div>
-          <div class="filter">
-           <div> <i class="fa-solid fa-tractor"></i></div>
-            <p>Farms</p>
-         </div>
-          <div class="filter">
-           <div> <i class="fa-solid fa-star"></i></div>
-            <p>Unique stays</p>
-         </div>
-         <div class="filter">
-           <div> <i class="fa-solid fa-landmark-dome"></i> </div>
-            <p>Domes</p>
-         </div>
-          <div class="filter">
-           <div> <i class="fa-solid fa-sailboat"></i> </div>
-            <p>Boats</p>
-         </div>
-         <div class="tax-toggle">
-            <div class="form-check-reverse form-switch">
+<div id="filters">
+    <div class="filter">
+        <div> <i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-solid fa-city"></i></div>
+        <p>Iconic cities</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-solid fa-snowflake"></i></div>
+        <p>Artic</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-solid fa-tractor"></i></div>
+        <p>Farms</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-solid fa-star"></i></div>
+        <p>Unique stays</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-solid fa-landmark-dome"></i> </div>
+        <p>Domes</p>
+    </div>
+    <div class="filter">
+        <div> <i class="fa-solid fa-sailboat"></i> </div>
+        <p>Boats</p>
+    </div>
+    
+    <div class="tax-toggle">
+        <div class="form-check-reverse form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
             <label class="form-check-label" for="switchCheckDefault">Display total after Taxes</label>
         </div>
-        </div>
+    </div>
+</div>   
 
-
-    </div>   
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <% for(let listing of allListing){ %>
-            <a href="/listings/<%= listing._id %>" class="listing-link">
-    <div class="card col listing-card">
-        <div class="card-img-overlay">
-        </div>
-  <img src="<%= listing.image.url || listing.image %>" class="card-img-top" alt="listing_image" style="height: 20rem" >
-  <div class="card-body">
-    <p class="card-text">
-        <b><%= listing.title %> </b><br/>
-        &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
-        <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
-    </p>
-  </div>
-</div>
-</a>
-<% } %>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for(let listing of allListing){ %>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card col listing-card">
+                <div class="card-img-overlay"></div>
+                <img src="<%= listing.image.url || listing.image %>" class="card-img-top" alt="listing_image" style="height: 20rem">
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><%= listing.title %> </b><br/>
+                        &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+                        <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
+                    </p>
+                </div>
+            </div>
+        </a>
+    <% } %>
 </div>
 
 <script>
     let taxSwitch = document.querySelector("#switchCheckDefault");
-    taxSwitch.addEventListener("click",()=>{
+    taxSwitch.addEventListener("click", () => {
         let taxInfo = document.querySelectorAll(".tax-info");
         for(let info of taxInfo){
             if(info.style.display !== "inline"){
                 info.style.display = "inline";
-            }else{
+            } else {
                 info.style.display = "none";
             }
         }
-        
-        
     })
-
-
 </script>
