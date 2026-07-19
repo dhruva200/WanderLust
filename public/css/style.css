@@ -8,7 +8,7 @@ body{
     flex: 1;
 }
 .navbar{
-    height: 5rem;
+    min-height: 5rem;
     background-color: white;
 }
 .fa-compass{
@@ -154,5 +154,19 @@ font-weight: 400;
 }
 
 @media (max-width: 768px) {
-    #filters { gap: 1rem; }
+    
+    /* Mobile Filter Fixes */
+    #filters { 
+        gap: 1rem; 
+    }
+    
+    /* Mobile Navbar Fixes */
+    .navbar-collapse {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 0.5rem;
+        z-index: 1000; /* Ensures the menu stays on top of images */
+    }
 }
